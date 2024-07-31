@@ -39,3 +39,9 @@ jobs:
           REMOTE_USER: ${{ secrets.USER }}
           # 部署目标目录
           TARGET: /var/www/html/dist
+      - name: 通知
+        run: |
+        curl --location \
+          "https://sctapi.ftqq.com/${{secrets.FT_KEY}}.send" \
+          --header 'Content-Type: application/x-www-form-urlencoded' \
+          --data-urlencode 'text=部署成功了～～～'
