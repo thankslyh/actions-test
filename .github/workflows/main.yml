@@ -10,6 +10,8 @@ jobs:
     # 运行环境，这里是 ubuntu，参考 https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions#%E7%94%A8%E4%BA%8E%E5%85%AC%E5%85%B1%E5%AD%98%E5%82%A8%E5%BA%93%E7%9A%84-github-%E6%89%98%E7%AE%A1%E7%9A%84%E6%A0%87%E5%87%86%E8%BF%90%E8%A1%8C%E5%99%A8
     runs-on: ubuntu-latest
     steps:
+      - name: 变量和密钥配置的区别（secrets & vars）
+        run: echo "var ${{vars.TEST}} secrets ${{secrets.DEPLOY}}}}"
       - name: Checkout
         # 检出对应代码
         uses: actions/checkout@v3
@@ -32,8 +34,8 @@ jobs:
           # 打包出来的静态代码
           SOURCE: "dist/"
           # 部署ESC目标主机 xx.xx.xx.xx
-          REMOTE_HOST: ${{ vars.HOST }}
+          REMOTE_HOST: ${{ secrets.HOST }}
           # 登录ESC用户 root 或其他的 user
-          REMOTE_USER: ${{ vars.USER }}
+          REMOTE_USER: ${{ secrets.USER }}
           # 部署目标目录
           TARGET: /var/www/html/dist
