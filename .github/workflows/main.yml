@@ -36,4 +36,4 @@ jobs:
           # 登录ESC用户 root 或其他的 user
           REMOTE_USER: ${{ vars.USER }}
           # 部署目标目录
-          TARGET: /var/www/html
+          TARGET: /var/www/html/dist
