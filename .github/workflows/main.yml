@@ -41,4 +41,4 @@ jobs:
           TARGET: /var/www/html/dist
       - name: 通知
         run: | 
-          curl --location 'https://sctapi.ftqq.com/SCT98548TBoHoqFlSCw02j6cz8g5jEv1O.send' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'text=部署成功了～～～'
+          curl --location 'https://sctapi.ftqq.com/${{secrets.FT_KEY}}.send' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'text=部署成功了～～～'
