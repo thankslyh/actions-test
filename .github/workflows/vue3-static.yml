@@ -1,12 +1,12 @@
-name: 自动化部署
+name: vue3 static 自动化部署
 on:
   # 哪些钩子触发，这里是 push
   push:
+    paths:
+      - "vue3-static/**"
     branches:
       # 具体的分支
       - master
-    paths-ignore:
-      - '!vue3-static/**'
 jobs:
   build:
     # 运行环境，这里是 ubuntu，参考 https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions#%E7%94%A8%E4%BA%8E%E5%85%AC%E5%85%B1%E5%AD%98%E5%82%A8%E5%BA%93%E7%9A%84-github-%E6%89%98%E7%AE%A1%E7%9A%84%E6%A0%87%E5%87%86%E8%BF%90%E8%A1%8C%E5%99%A8
