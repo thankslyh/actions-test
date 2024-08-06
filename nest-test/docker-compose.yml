@@ -15,7 +15,7 @@ services:
   mysql:
     image: mysql
     ports:
-      - '3306:3306'
+      - '4396:4396'
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci # 设置默认字符集
     environment:
       MYSQL_DATABASE: actions-test
