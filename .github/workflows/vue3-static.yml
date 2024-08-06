@@ -5,6 +5,8 @@ on:
     branches:
       # 具体的分支
       - master
+    paths-ignore:
+      - '!vue3-static/**'
 jobs:
   build:
     # 运行环境，这里是 ubuntu，参考 https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions#%E7%94%A8%E4%BA%8E%E5%85%AC%E5%85%B1%E5%AD%98%E5%82%A8%E5%BA%93%E7%9A%84-github-%E6%89%98%E7%AE%A1%E7%9A%84%E6%A0%87%E5%87%86%E8%BF%90%E8%A1%8C%E5%99%A8
@@ -22,6 +24,8 @@ jobs:
           node-version: 20.x
       - name: 打包
         run: |
+          # 注意，这里我需要进入vue3-static目录下，正常情况下不需要
+          cd vue3-static
           npm install
           npm run build
       - name: 上传静态资源到服务器
@@ -32,13 +36,13 @@ jobs:
           # 复制操作的参数。"-avzr --delete"意味部署时清空服务器目标目录下的文件
           ARGS: "-avz --delete"
           # 打包出来的静态代码
-          SOURCE: "dist/"
+          SOURCE: "vue3-static/dist/"
           # 部署ESC目标主机 xx.xx.xx.xx
           REMOTE_HOST: ${{ secrets.HOST }}
           # 登录ESC用户 root 或其他的 user
           REMOTE_USER: ${{ secrets.USER }}
           # 部署目标目录
-          TARGET: /var/www/html/dist
-      - name: 通知
-        run: | 
-          curl --location 'https://sctapi.ftqq.com/${{secrets.FT_KEY}}.send' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'text=部署成功了～～～'
+          TARGET: /var/www/html/vue3-static
+      # - name: 通知
+      #   run: | 
+      #     curl --location 'https://sctapi.ftqq.com/${{secrets.FT_KEY}}.send' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'text=部署成功了～～～'
