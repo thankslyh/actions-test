@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { InjectEntityManager, InjectRepository } from '@nestjs/typeorm';
+import { InjectEntityManager } from '@nestjs/typeorm';
 import { RedisClientType } from 'redis';
 import { TestEntity } from './test.entity';
-import { EntityManager, Repository } from 'typeorm';
+import { EntityManager } from 'typeorm';
 
 @Injectable()
 export class AppService {

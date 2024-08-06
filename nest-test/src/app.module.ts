@@ -10,7 +10,7 @@ import { EntityManager } from 'typeorm';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'mysql',
       port: 3306,
       username: 'root',
       password: 'Li!21577',
@@ -30,7 +30,7 @@ import { EntityManager } from 'typeorm';
       useFactory: async () => {
         const client = createClient({
           socket: {
-            host: 'localhost',
+            host: 'redis',
             port: 6379,
           },
         });

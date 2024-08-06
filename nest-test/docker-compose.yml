@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  action-test:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    depends_on:
+      - mysql
+      - redis
+    ports:
+      - '7777:7777'
+    restart: always
+    networks:
+      - common-network
+  mysql:
+    image: mysql
+    ports:
+      - '3306:3306'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci # 设置默认字符集
+    environment:
+      MYSQL_DATABASE: actions-test
+      MYSQL_ROOT_PASSWORD: Li!21577
+    restart: always
+    networks:
+      - common-network
+  redis:
+    image: redis
+    ports:
+      - '6379:6379'
+    restart: always
+    networks:
+      - common-network
+networks:
+  common-network:
+    driver: bridge
