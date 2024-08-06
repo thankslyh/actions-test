@@ -25,7 +25,8 @@ jobs:
       - name: 构建打包上传
         uses: docker/build-push-action@v5
         with:
-          context: .
+          # 注意：我这里是该仓库下有多个工程，所以需要指定路径
+          context: ./nest-test
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
           push: true
@@ -36,5 +37,5 @@ jobs:
           # 部署目标主机
           host: ${{ secrets.ESC_HOST }}
           # 登录用户
-          username: ${{ secrets.USER }}
+          username: ${{ secrets.ESC_USER }}
           script: docker login --username=${{secrets.DOCKER_USER}} --password=${{secrets.DOCKER_PASSWORD}} && cd /var/www/actions-test/nest-test && docker-compose down && docker-compose pull && docker-compose up -d
