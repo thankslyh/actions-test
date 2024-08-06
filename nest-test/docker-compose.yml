@@ -8,14 +8,14 @@ services:
       - mysql
       - redis
     ports:
-      - '7777:7777'
+      - '4396:4396'
     restart: always
     networks:
       - common-network
   mysql:
     image: mysql
     ports:
-      - '4396:4396'
+      - '3306:3306'
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci # 设置默认字符集
     environment:
       MYSQL_DATABASE: actions-test
