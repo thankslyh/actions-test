@@ -17,6 +17,6 @@ export class AppController {
 
   @Get('/deploy')
   deploy() {
-    return 'deploy success4';
+    return 'deploy success6';
   }
 }
