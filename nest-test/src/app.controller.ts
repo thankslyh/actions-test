@@ -14,4 +14,9 @@ export class AppController {
   mysql() {
     return this.appService.getMysqlData();
   }
+
+  @Get('/deploy')
+  deploy() {
+    return 'deploy success';
+  }
 }

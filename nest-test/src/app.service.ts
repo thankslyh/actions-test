@@ -13,7 +13,7 @@ export class AppService {
   private readonly testEntity: EntityManager;
 
   async getRedisKey() {
-    await this.redisClient.set('key', 'redis测试');
+    await this.redisClient.set('key', 'redis测试1111111');
     return await this.redisClient.get('key');
   }
 
