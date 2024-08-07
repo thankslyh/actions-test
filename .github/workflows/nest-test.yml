@@ -40,4 +40,4 @@ jobs:
           host: ${{ secrets.ESC_HOST }}
           # 登录用户
           username: ${{ secrets.ESC_USER }}
-          script: docker login --username=${{secrets.ALI_DOCKER_USER}} --password=${{secrets.ALI_DOCKER_PASS}} registry.cn-beijing.aliyuncs.com && cd /var/www/actions-test/nest-test && git pull && docker-compose down && docker-compose pull && docker-compose up -d
+          script: docker login --username=${{secrets.ALI_DOCKER_USER}} --password=${{secrets.ALI_DOCKER_PASS}} registry.cn-beijing.aliyuncs.com && cd /var/www/actions-test/nest-test && docker-compose down && docker-compose pull && docker-compose up -d
