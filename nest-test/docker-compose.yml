@@ -1,10 +1,7 @@
 version: '3.8'
 services:
   action-test:
-    build:
-      # context: ./
-      # dockerfile: ./Dockerfile
-      image: thankslyh/nest-test:master
+    image: thankslyh/nest-test:master
     depends_on:
       - mysql
       - redis

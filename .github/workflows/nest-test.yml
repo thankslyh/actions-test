@@ -5,7 +5,7 @@ on:
       - master
     # 设置那些文件发生改变才触发，我这里是因为有多个仓库，所以需要设置
     paths:
-      - "nest-test/**"
+      - "nest-test/src/**"
 jobs:
   build:
     runs-on: ubuntu-latest
