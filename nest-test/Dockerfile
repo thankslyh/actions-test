@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package.json .
 
-RUN npm config set registry https://registry.npmmirror.com/
+# RUN npm config set registry https://registry.npmmirror.com/
 
 # 需要打包所以需要完整的依赖
 RUN npm install
@@ -18,7 +18,7 @@ FROM node:alpine AS runner
 COPY --from=builder /app/dist /app
 COPY --from=builder /app/package.json /app/package.json
 
-RUN npm config set registry https://registry.npmmirror.com/
+# RUN npm config set registry https://registry.npmmirror.com/
 
 WORKDIR /app
 
