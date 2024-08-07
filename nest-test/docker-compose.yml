@@ -1,9 +1,7 @@
 version: '3.8'
 services:
   action-test:
-    build:
-      # context: .
-    image: thankslyh/nest-test:master
+    image: registry.cn-beijing.aliyuncs.com/thankslyh/nest-test:master
     depends_on:
       - mysql
       - redis

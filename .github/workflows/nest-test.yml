@@ -20,8 +20,10 @@ jobs:
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{secrets.DOCKER_USER}}
-          password: ${{secrets.DOCKER_PASSWORD}}
+          # 设置登录的仓库
+          registry: registry.cn-beijing.aliyuncs.com
+          username: ${{secrets.ALI_DOCKER_USER}}
+          password: ${{secrets.ALI_DOCKER_PASS}}
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -38,4 +40,4 @@ jobs:
           host: ${{ secrets.ESC_HOST }}
           # 登录用户
           username: ${{ secrets.ESC_USER }}
-          script: docker login --username=${{secrets.DOCKER_USER}} --password=${{secrets.DOCKER_PASSWORD}} && cd /var/www/actions-test/nest-test && docker-compose down && docker-compose pull && docker-compose up -d
+          script: docker login --username=${{secrets.ALI_DOCKER_USER}} --password=${{secrets.ALI_DOCKER_PASS}} registry.cn-beijing.aliyuncs.com && cd /var/www/actions-test/nest-test && git pull && docker-compose down && docker-compose pull && docker-compose up -d
