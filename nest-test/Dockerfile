@@ -1,16 +1,13 @@
-FROM node:latest
+FROM node:alpine
 
 WORKDIR /app
 
 COPY package.json .
 
-RUN npm config set registry https://registry.npmmirror.com/
-
-RUN npm install
+RUN npm install --omit=dev \
+    npm run build
 
 COPY . .
-
-RUN npm run build
 
 EXPOSE 4396
 
